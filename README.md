@@ -1,88 +1,71 @@
 # Investment Analytics Platform
 
-This README was generated on 2026-03-17 by Aryan Dhillon
+![Python](https://img.shields.io/badge/Python-3.9+-blue)
+![Framework](https://img.shields.io/badge/FastAPI-Backend-green)
+![Frontend](https://img.shields.io/badge/Streamlit-UI-red)
+
+Full-stack trading strategy backtesting platform for evaluating and optimizing algorithmic trading strategies on historical market data.
+
+Users can simulate trades, compare strategies against buy-and-hold, and analyze performance using advanced risk metrics such as Sharpe ratio, volatility, and drawdown.
 
 ---
 
-# GENERAL INFORMATION
+## Key Highlights
 
-## Project Title
-Investment Analytics Platform
-
-## Author Information
-Name: Aryan Dhillon  
-Institution: Purdue University  
-Major: Computer Engineering  
-Minor: Business Economics
-
-## Project Description
-A full-stack trading strategy backtesting platform that allows users to analyze financial assets, test trading strategies, and evaluate performance using advanced metrics and visualizations.
+- Built a full-stack trading platform using FastAPI (backend) and Streamlit (frontend)
+- Implemented multiple trading strategies (momentum, mean reversion, moving averages)
+- Designed a custom backtesting engine with trade simulation and portfolio tracking
+- Computed advanced risk metrics (Sharpe, Sortino, drawdown, CAGR)
+- Added parameter optimization and walk-forward validation to reduce overfitting
+- Visualized performance with interactive Plotly dashboards
 
 ---
 
-# DEMO
+## Tech Stack
 
-### 1. Search and Load Asset
-![Landing Screen](images/landing.png)
-
-Search for any stock ticker, select a time range, and load price data to begin analysis.
-
----
-
-### 2. Price History
-![Price Chart](images/price_chart.png)
-
-Displays historical price data for the selected asset before applying any strategy.
+- **Frontend:** Streamlit  
+- **Backend:** FastAPI  
+- **Data Processing:** pandas, numpy  
+- **Visualization:** Plotly  
+- **Data Source:** Yahoo Finance API  
 
 ---
 
-### 3. Strategy Signals
-![Strategy Signals](images/strategy_signals.png)
+## Demo
 
-Applies trading strategies and visualizes buy and sell signals based on market conditions.
+Interactive demo of the platform, showing asset search, strategy execution, performance metrics, and risk analysis.
 
----
-
-### 4. Performance Metrics
-![Performance Metrics](images/performance_metrics.png)
-
-Evaluates strategy performance using key metrics such as Sharpe ratio, CAGR, volatility, and drawdown, and compares results against a buy-and-hold benchmark.
+![Platform Demo](images/demo_git.gif)
 
 ---
 
-### 5. Risk Analysis (Underwater Chart)
-![Underwater Chart](images/underwater.png)
-
-Visualizes drawdowns over time, showing how far the portfolio falls from its previous peak and how long it remains underwater.
-
----
-
-### 6. Parameter Optimization and Validation
+### Optimization and Validation
 ![Optimization](images/optimization.png)
 
-Optimizes strategy parameters on a training period and evaluates performance on out-of-sample data to reduce overfitting and improve robustness.
+Optimizes strategy parameters on training data and evaluates performance on out-of-sample data to improve robustness.
 
 ---
 
-# SHARING / ACCESS INFORMATION
 
-Repository:  
-https://github.com/yourusername/investment-analytics-platform
+## Architecture
 
-Dependencies:
-- Python 3.9+
-- pandas
-- numpy
-- streamlit
-- fastapi
-- plotly
-- requests
+```text
+Frontend (Streamlit)
+        ↓
+Backend API (FastAPI)
+        ↓
+Data Layer (Yahoo Finance API)
+        ↓
+Backtesting Engine + Analytics
+```
+
+The backtesting engine, strategy logic, and analytics pipeline were implemented from scratch in Python.
 
 ---
 
-# PROJECT OVERVIEW
+## Project Overview
 
-This project enables users to:
+The platform allows users to:
 
 - Load historical price data for financial assets
 - Apply trading strategies
@@ -93,102 +76,134 @@ This project enables users to:
 
 ---
 
-# FEATURES
+## Features
 
-## Strategies
-- Moving Average Crossover
-- Momentum
-- Mean Reversion
+### Strategies
+- Moving Average Crossover  
+- Momentum  
+- Mean Reversion  
 
-## Performance Metrics
+### Performance Metrics
 - Total Return (%)
 - CAGR
 - Volatility
 - Sharpe Ratio
 - Sortino Ratio
 - Max Drawdown
-- Calmar Ratio
+- Calmar Ratio  
 
-## Trade Statistics
-- Number of trades
-- Win rate
-- Profit factor
-- Average gain / loss
-- Trade log with PnL and holding period
+### Trade Statistics
+- Number of trades  
+- Win rate  
+- Profit factor  
+- Average gain / loss  
+- Trade log with PnL and holding period  
 
-## Visualization
-- Price chart with buy/sell signals
-- Portfolio vs buy-and-hold
-- Drawdown and underwater charts
-- Rolling Sharpe ratio
-- Rolling returns
+### Visualization
+- Price chart with buy/sell signals  
+- Portfolio vs buy-and-hold  
+- Drawdown and underwater charts  
+- Rolling Sharpe ratio  
+- Rolling returns  
 
-## Advanced Capabilities
-- Parameter optimization (train/test split)
-- Walk-forward validation
-
----
-
-# PROJECT STRUCTURE
-
-iap_backend/  
-- api/            FastAPI routes  
-- strategies/     Trading strategies  
-- analytics/      Metrics and trade statistics  
-- engine/         Backtesting logic  
-
-app.py            Streamlit frontend  
+### Advanced Capabilities
+- Parameter optimization (train/test split)  
+- Walk-forward validation  
 
 ---
 
-# METHODOLOGICAL INFORMATION
+## Use Cases
 
-## Data Collection
-- Market data is fetched via backend API (Yahoo Finance source)
-- Data includes historical daily price information
+- Algorithmic trading research  
+- Strategy validation and backtesting  
+- Risk analysis and portfolio evaluation  
+- Educational tool for quantitative finance concepts  
 
-## Data Processing
-- Price data is converted into pandas DataFrames
-- Strategies generate trading signals based on rules
-- Backtester simulates trades using signals
-- Metrics are calculated from portfolio value series
+---
 
-## Metrics Calculation
-- Returns are computed using percentage change
-- Volatility is annualized using 252 trading days
-- Sharpe and Sortino use excess returns
-- Drawdown is computed relative to running peak
+## Project Structure
 
-## Software Requirements
+```text
+iap_backend/
+├── api/ # FastAPI routes
+├── strategies/ # Trading strategies
+├── analytics/ # Metrics and trade statistics
+├── engine/ # Backtesting logic
+
+app.py # Streamlit frontend
+```
+
+---
+
+## Methodology
+
+### Data Collection
+- Market data fetched via backend API (Yahoo Finance)
+- Historical daily price data used for analysis
+
+### Data Processing
+- Price data stored in pandas DataFrames  
+- Strategies generate trading signals  
+- Backtester simulates trades  
+- Portfolio values tracked over time  
+
+### Metrics Calculation
+- Returns computed using percentage change  
+- Volatility annualized using 252 trading days  
+- Sharpe and Sortino based on excess returns  
+- Drawdown calculated relative to running peak  
+
+---
+
+## Requirements
+
 - Python 3.9+
-- pandas, numpy
-- FastAPI (backend)
-- Streamlit (frontend)
-- Plotly (visualization)
+- pandas
+- numpy
+- streamlit
+- fastapi
+- plotly
+- requests
 
 ---
 
-# HOW TO RUN
+## How to Run
 
-## 1. Clone repository
-git clone https://github.com/yourusername/investment-analytics-platform.git  
-cd investment-analytics-platform  
+### 1. Clone repository
 
-## 2. Install dependencies
-pip install -r requirements.txt  
+```bash
+git clone https://github.com/aryan0dhi/investment-analytics-platform.git
 
-## 3. Start backend
-uvicorn iap_backend.main:app --reload  
+cd investment-analytics-platform
+```
 
-## 4. Start frontend
-streamlit run app.py  
+### 2. Install dependencies
 
-## 5. Open in browser
-http://localhost:8501  
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Start backend
+
+```bash
+uvicorn iap_backend.main:app --reload
+```
+
+### 4. Start frontend
+
+```bash
+streamlit run app.py
+```
+
+### 5. Open in browser
+
+```text
+http://localhost:8501
+```
 
 ---
 
-# EXAMPLE USAGE
+## Example Usage
 
 1. Enter a ticker (e.g., MSFT, AAPL, SPY)  
 2. Select a date range  
@@ -201,16 +216,25 @@ http://localhost:8501
 
 ---
 
-# FUTURE IMPROVEMENTS
+## Limitations
 
-- Add additional strategies 
+- Does not account for transaction costs or slippage  
+- Assumes perfect execution at closing prices  
+- Strategies are rule-based and not adaptive to regime changes  
+- No live trading or real-time data integration  
+
+---
+
+## Future Improvements
+
+- Add additional strategies  
 - Multi-asset portfolio support  
 - Live trading integration  
 - Cloud deployment (AWS)  
 
 ---
 
-# NOTES
+## Notes
 
 - Assumes 252 trading days per year  
 - All returns are percentage-based  
